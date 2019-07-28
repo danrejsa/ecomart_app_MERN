@@ -1,0 +1,128 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 5vmin;
+  pointer-events: none;
+}
+.App-logo2 {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin; 
+  pointer-events: none;
+}
+h2{
+  text-align:center
+}
+.body_type{
+  
+  margin:10px;
+}
+
+
+
+
+.car-container{
+  margin-top:3rem;
+  width:30%;
+  height:300px;
+  background:white;
+}
+.actions{
+  display:flex;
+  width:100%;
+  margin-left: 5px;
+}
+
+.containers{
+  margin-top:3rem;
+  width:100%;
+  display:flex;
+  flex-wrap: wrap;
+list-style-type: none
+}
+.car-img-container{
+  margin-top:10px;
+  width:90%;
+  margin-left:auto;
+  margin-right:auto; 
+}
+.car-img{
+  margin-left:auto;
+  margin-right:auto;  
+  width:100%;
+  height:150px;
+}
+.car-container{
+  margin:18px;
+  width:30%;
+  height:250px;
+  margin-left:auto;
+margin-right:auto;
+  background:whitesmoke;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.link:hover{
+  text-decoration: none;
+}
+
+.slides{
+  width:90%;
+  display:flex;
+  flex-wrap: wrap;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:3rem;
+  margin-top:1.5rem;
+}
+
+.slider{
+  width: 25%;
+  color:white;
+  height:500px;
+  background:whitesmoke;
+  padding:3px;
+  margin:8px;
+  margin-left:auto;
+  margin-right:auto;
+}
+#slide-img{
+  width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+#slide-center{
+  width: 50%;
+  height:500px;
+
+  padding:3px;
+  margin:8px;   
+  margin-left:auto;
+  margin-right:auto;
+}
