@@ -1,13 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const Car = require('../../models/car');
-const auth = require('../../middleware/auth')
+const auth = require('../../middleware/auth');
+const config = require('config');
+const apiSecret = config.get('apiSecret');
+const apiKey = config.get('apikey');
 const cloudinary = require('cloudinary').v2;
 const multer  =   require('multer'); 
-const path = require('path');
 
 
-isLoggedIn = (req, res, next) =>{
+
+isLoggedIn = (req, res, next) => {
     if(req.isAuthenticated()){
         return next();
     }
@@ -43,6 +46,7 @@ router.get('/:id', (req, res) => {
 })
 
 
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
     cb(null, './uploads')
@@ -55,20 +59,18 @@ var upload = multer({ storage: storage }).single('file');
 
 //@POST A CAR route
 router.post('/', auth, (req,res) => {
-console.log(req.body)
-  //  console.log(req.file)  
- // const image_url = req.body.image_url; 
+
 upload(req,res, (err)  => {
             if(err) {
                 return res.end("Error uploading file.");
             }        
             cloudinary.config({ 
               cloud_name: 'danrejsa', 
-              api_key: '838429296415295', 
-              api_secret: 'WUUp71HOsCIKizakCrGvDtAfbRk' 
+              api_key: apiKey, 
+              api_secret: apiSecret 
             });
-            //const path = req.body.image_url; 
-            //const path = req.file.path;
+                 
+          
             const path = req.file.path;
             const uniqueFilename = new Date().toISOString();
             cloudinary.uploader.upload(

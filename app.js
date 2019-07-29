@@ -8,7 +8,8 @@ app.use(cors())
 
 
 // connection to database
-const db = "mongodb://127.0.0.1:27017/ecomart"
+
+const db = config.get('mongoURI');
 //const db = config.get('mongoURI');
 mongoose.connect(db,{
     useNewUrlParser: true,
@@ -27,7 +28,13 @@ app.use('/api/reports', reports)
 app.use('/api/auth', auth)
 app.use('/api/cars', cars);
 
-
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'));
+    app.get('*', (req,res) => {
+      res.sendFile(path.resolve(__dirname, 'client' ,'build', 'index.html'))
+    })
+  }
+  
 module.exports = app;
 
 

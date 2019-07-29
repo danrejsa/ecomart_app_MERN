@@ -1,5 +1,7 @@
 {
     "mongoURI":
     "mongodb+srv://danrejsa:danrejsa2021@cluster0-pzr8a.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret":"danrej_mern"
+    "jwtSecret":"danrej_mern",
+    "apikey": "838429296415295", 
+    "apiSecret": "WUUp71HOsCIKizakCrGvDtAfbRk" 
 }
