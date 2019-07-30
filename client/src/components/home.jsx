@@ -79,7 +79,7 @@ class Home extends Component {
         next={this.next}
         previous={this.previous}
       >
-        <CarouselIndicators items={this.props.car.cars} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+      
         {slides}
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />

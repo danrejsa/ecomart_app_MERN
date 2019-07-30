@@ -10,7 +10,7 @@ app.use(cors())
 // connection to database
 
 const db = config.get('mongoURI');
-//const db = config.get('mongoURI');
+//const db = "mongodb://127.0.0.1:27017/ecomart";
 mongoose.connect(db,{
     useNewUrlParser: true,
     useCreateIndex:true

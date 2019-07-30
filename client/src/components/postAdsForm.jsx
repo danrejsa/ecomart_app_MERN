@@ -319,7 +319,7 @@ class PostAds extends Component {
           </FormGroup>
           {$imagePreview}
 
-          <Button color='info' style={{ marginBottom: "3rem", marginTop: "2rem", float:'right' }}>
+          <Button color='info' style={{ marginBottom: "6rem", marginTop: "2rem", float:'right' }}>
             Post Ad
           </Button>
         </Form></Fragment>
