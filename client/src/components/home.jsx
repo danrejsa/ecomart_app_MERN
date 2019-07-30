@@ -79,7 +79,11 @@ class Home extends Component {
         next={this.next}
         previous={this.previous}
       >
+<<<<<<< HEAD
       
+=======
+       
+>>>>>>> abbdbb6af4a7f9dfc6d65f692164fa8438df5450
         {slides}
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
