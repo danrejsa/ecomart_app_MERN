@@ -44,7 +44,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage }).single("file");
 
 //@POST A CAR route
-router.post("/", (req, res) => {
+router.post("/", auth, (req, res) => {
   upload(req, res, err => {
     if (err) {
       return res.end("Error uploading file.");
