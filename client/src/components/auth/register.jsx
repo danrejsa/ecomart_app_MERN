@@ -125,12 +125,10 @@ class Register extends Component {
             </Form>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.onSubmit}>
+            <Button block color="primary" onClick={this.onSubmit}>
               Register
             </Button>{" "}
-            <Button color="secondary" onClick={this.toggle}>
-              Cancel
-            </Button>
+            
           </ModalFooter>
         </Modal>
       </fragment>

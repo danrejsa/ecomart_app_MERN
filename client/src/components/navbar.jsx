@@ -177,7 +177,8 @@ class NavBar extends Component {
                 ) : null}
 
                 {isAuthenticated ? (
-                  <NavItem>
+                  <NavItem className='post-button'>
+                    
                     <Link to="/postAds/">
                       <Button
                         outline
@@ -195,7 +196,7 @@ class NavBar extends Component {
                     </Link>
                   </NavItem>
                 ) : (
-                  <NavItem>
+                  <NavItem className='post-button'>
                     <Link to="#">
                       <Button
                         onClick={this.togglePost}

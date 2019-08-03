@@ -128,7 +128,7 @@ class PostAds extends Component {
           style={{ margin: "auto", width: "70%" }}
         >
           <FormGroup>
-            <Label for="customerId">Customer ID:</Label>
+            <Label for="customerId">Customer ID (Check your profile for this Id):</Label>
             <Input
               onChange={this.onChange}
               type="text"

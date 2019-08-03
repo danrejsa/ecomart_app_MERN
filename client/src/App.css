@@ -20,14 +20,31 @@ h2{
   margin:10px;
 }
 
+@-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
 
 
+.post-button{
+  box-shadow: 0 0 0 0 rgb(182, 214, 240);
+cursor:pointer;
+-webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+-moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+-ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1); animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+.post-button:hover{
+  -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+}
+/*box-shadow: 0 5px 45px 0 rgba(89, 109, 121, 0.2);*/
 
 .car-container{
   margin-top:3rem;
   width:30%;
   height:300px;
   background:white;
+    
 }
 .actions{
   display:flex;
@@ -125,4 +142,44 @@ margin-right:auto;
   margin:8px;   
   margin-left:auto;
   margin-right:auto;
+}
+
+footer{
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  background:#F7F8F9;
+  height:350px;
+  color:#442563;
+  font-size:14px;
+  margin-top:10rem;
+  background-repeat:no-repeat;
+}
+
+.social{
+  width:30px;
+  height:25px;
+   padding:3px;
+}
+
+.footer-business{
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  background:#F7F8F9;
+  height:350px;
+  color:#442563;
+  font-size:14px;
+  margin-top:-4rem;
+  position:relative;
+  background-repeat:no-repeat;
+}
+.footer-div{
+  margin-top:2rem;
+  width:20%; 
+  margin-left:60px;
+  margin-right:auto;
+}
+.footer-text{
+  color:#442563;
 }

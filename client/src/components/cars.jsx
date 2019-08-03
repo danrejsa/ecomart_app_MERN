@@ -30,7 +30,7 @@ class Cars extends Component {
   }
   state = {
     currentPage: 1,
-    carsPerPage: 6,
+    carsPerPage: 9,
     setCurrentPage: null
   };
 
