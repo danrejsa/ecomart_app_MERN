@@ -2,19 +2,16 @@ import React, { Fragment, Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import logo from "../logo.svg";
-import Contact from "./xxxx/contact";
-import About from "./xxxx/about";
-import Services from "./xxxx/services";
-import App from "../App";
 import Home from "./home";
-import BuyCar from "./buyCar";
+import BuyItem from "./buyItem";
 import Dashboard from "./admin/dashboard";
-import PostAds from "./postAdsForm";
+import PostAds from "./postCar";
 import Profile from "./profile";
 import History from "./history";
 import Login from "./auth/login";
 import Register from "./auth/register";
 import LogOut from "./auth/logout";
+import Category from "./category";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
   Collapse,
@@ -134,7 +131,7 @@ class NavBar extends Component {
             className={this.props.className}
           >
             <ModalHeader togglePost={this.togglePost}>
-              DANREJ AUTOMART
+              DLinks
             </ModalHeader>
             <ModalBody>Please login to perform this transaction</ModalBody>
             <ModalFooter>
@@ -146,7 +143,7 @@ class NavBar extends Component {
           <Navbar color="light" light expand="md">
             <NavbarBrand>
               <Link class="link" to="/">
-                <h3 style={{ color: "gray" }}> DANREJ AUTOMART</h3>{" "}
+                <h3 style={{ color: "gray" }}>      DLinks</h3>{" "}
               </Link>
             </NavbarBrand>
             <img src={logo} className="App-logo" alt="logo" />
@@ -159,15 +156,11 @@ class NavBar extends Component {
                     <NavItem>
                       <Link to="/dashboard">
                         <Button
+                        className='dashboard-btn'
                           outline
                           color="info"
                           size="sm"
-                          style={{
-                            margin: "5px",
-                            padding: "1px",
-                            width: "100px",
-                            height: "40px"
-                          }}
+                        
                         >
                           Dashboard
                         </Button>
@@ -177,40 +170,29 @@ class NavBar extends Component {
                 ) : null}
 
                 {isAuthenticated ? (
-                  <NavItem className='post-button'>
-                    
-                    <Link to="/postAds/">
+                  <NavItem className='post-button'>                    
+                    <Link  className='post-btn-link' to="/category/">
                       <Button
                         outline
                         color="secondary"
-                        style={{
-                          margin: "5px",
-                          padding: "1px",
-                          width: "100px",
-                          height: "40px"
-                        }}
+                        className='post-btn'
                       >
-                        Post Ads{" "}
-                        <span class="material-icons">directions_car</span>
+                       <span class='post-btn-text'> Post Ads{" "}</span>
+                        <span  class="material-icons">add</span>
                       </Button>
                     </Link>
                   </NavItem>
                 ) : (
                   <NavItem className='post-button'>
-                    <Link to="#">
+                    <Link to="#" className='post-btn-link'>
                       <Button
+                      className='post-btn'
                         onClick={this.togglePost}
                         outline
-                        color="secondary"
-                        style={{
-                          margin: "5px",
-                          padding: "1px",
-                          width: "100px",
-                          height: "40px"
-                        }}
+                        color="secondary"                       
                       >
-                        Post Ads{" "}
-                        <span class="material-icons">directions_car</span>
+                      <span class='post-btn-text'>Post Ads{" "}</span> 
+                        <span class="material-icons">add</span>
                       </Button>
                     </Link>
                   </NavItem>
@@ -219,13 +201,13 @@ class NavBar extends Component {
               </Nav>
             </Collapse>
           </Navbar>
-          <Route path="/" exact component={Home} />
-          <Route path="/about/" component={About} />
+     
+          <Route path="/" exact component={Home} />         
           <Route path="/history/" component={History} />
-          <Route path="/contact/" component={Contact} />
-          <Route path="/services/" component={Services} />
+          <Route path="/category/" component={Category} />       
+         
           <Route path="/postAds/" component={PostAds} />
-          <Route path="/buyCar/" component={BuyCar} />
+          <Route path="/buyItem/" component={BuyItem} />
           <Route path="/dashboard/" component={Dashboard} />
         </div>
       </Router>

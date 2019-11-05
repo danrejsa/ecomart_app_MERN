@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Items from '../items';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 
@@ -68,6 +69,7 @@ class Tabs extends Component {
           <Row>
               <Col sm="12">
                 <h4>Tab 2 Contents</h4>
+                <Items/>
               </Col>
             </Row>
           </TabPane>

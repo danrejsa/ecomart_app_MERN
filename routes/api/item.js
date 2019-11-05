@@ -1,32 +1,32 @@
 const express = require("express");
 const router = express.Router();
-const Car = require("../../models/car");
+const Item = require("../../models/item");
 const auth = require("../../middleware/auth");
 const config = require("config");
 const apiSecret = config.get("apiSecret");
 const apiKey = config.get("apikey");
 const cloudinary = require("cloudinary").v2;
-const multer = require("multer");
+const multer = require("multer")
 
-//@ GET ALL CARS route
+//@ GET ALL Items route
 router.get("/", (req, res) => {
-  Car.find()
+  Item.find()
     .sort({ created_on: -1 })
-    .then(cars => {
-      res.status(200).json({ status: res.statusCode, cars });
+    .then(items => {
+      res.status(200).json({ status: res.statusCode, items });
     })
     .catch(err => {
       res.status(404).json({ error: err });
     });
 });
 
-//GET A CAR route
+//GET An Item route
 router.get("/:id", (req, res) => {
-  Car.findById(req.params.id)
+  Item.findById(req.params.id)
     .exec()
-    .then(car => {
-      if (car) return res.status(200).json({ status: res.statusCode, car });
-      res.status(404).json({ msg: "car within the given id not found" });
+    .then(item => {
+      if (item) return res.status(200).json({ status: res.statusCode, item });
+      res.status(404).json({ msg: "item within the given id not found" });
     })
     .catch(err => {
       res.status(500).json({ status: res.statusCode, error: err });
@@ -43,12 +43,8 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage }).single("file");
 
-//@POST A CAR route
-<<<<<<< HEAD
-router.post("/", auth,(req, res) => {
-=======
+//@POST A Item route
 router.post("/", auth, (req, res) => {
->>>>>>> 4b92e8b97e0abeb2a5248fd642a2a227670deb34
   upload(req, res, err => {
     if (err) {
       return res.end("Error uploading file.");
@@ -63,7 +59,7 @@ router.post("/", auth, (req, res) => {
     const uniqueFilename = new Date().toISOString();
     cloudinary.uploader.upload(
       path,
-      { public_id: `Car_Store/${uniqueFilename}`, tags: `cars` }, // directory and tags are optional
+      { public_id: `Item_Store/${uniqueFilename}`, tags: `items` }, // directory and tags are optional
       function(err, image) {
         if (err) return res.send(err);
         console.log("file uploaded to Cloudinary");
@@ -73,28 +69,34 @@ router.post("/", auth, (req, res) => {
         const customerId = req.body.customerId;
         const name = req.body.name;
         const email = req.body.email;
-        const car_location = req.body.car_location;
+        const item_location = req.body.item_location;
         const address = req.body.address;
+        const color = req.body.color;
         const phone = req.body.phone;
         const manufacturer = req.body.manufacturer;
         const status = req.body.status;
         const state = req.body.state;
         const price = req.body.price;
+        const quantity = req.body.quantity;
         const year = req.body.year;
         const transmission = req.body.transmission;
         const registered = req.body.registered;
         const license = req.body.license;
         const description = req.body.description;
         const model = req.body.model;
+        const author = req.body.author;
 
-        const car = new Car({
+        const item = new Item({
           customerId,
           name,
           email,
-          car_location,
+          item_location,
           address,
+          color,
           phone,
+          quantity,
           manufacturer,
+          author,
           status,
           state,
           price,
@@ -106,15 +108,15 @@ router.post("/", auth, (req, res) => {
           model,
           image_url
         });
-        car
+        item
           .save()
-          .then(car => {
-            console.log("car posted successfully");
+          .then(item => {
+            console.log("item posted successfully");
 
             res.status(201).json({
               status: res.statusCode,
-              cars: car,
-              msg: "car posted sucessfully"
+              items: item,
+              msg: "item posted sucessfully"
             });
           })
           .catch(err => {
@@ -125,21 +127,21 @@ router.post("/", auth, (req, res) => {
   });
 });
 
-//@DELETE A CAR route
+//@DELETE A Item route
 router.delete("/:id", (req, res) => {
-  Car.findById(req.params.id)
-    .then(car => car.remove())
+  Item.findById(req.params.id)
+    .then(item => item.remove())
     .then(() =>
       res
         .status(200)
-        .json({ status: res.statusCode, msg: "car deleted succesfully" })
+        .json({ status: res.statusCode, msg: "item deleted succesfully" })
     )
     .catch(err => res.status(500).json({ status: res.statusCode, error: err }));
 });
 
-//@PATCH A CAR route
+//@PATCH A Item route
 router.patch("/:id", (req, res) => {
-  Car.updateOne(
+  Item.updateOne(
     { _id: req.params.id },
     {
       $set: {
@@ -149,10 +151,10 @@ router.patch("/:id", (req, res) => {
     }
   )
     .exec()
-    .then(car => {
+    .then(item => {
       res
         .status(200)
-        .json({ status: res.statusCode, car, msg: "car updated successfully" });
+        .json({ status: res.statusCode, item, msg: "item updated successfully" });
     })
     .catch(err => {
       res.status(500).json({ status: res.statusCode, error: err });

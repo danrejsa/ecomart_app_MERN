@@ -13,10 +13,10 @@ import Alert from "reactstrap/lib/Alert";
 
 export const getItems = () => dispatch => {
   dispatch(itemsLoading());
-  axios.get("/api/cars").then(resp =>
+  axios.get("/api/items").then( resp =>
     dispatch({
       type: GET_ITEMS,
-      payload: resp.data.cars
+      payload: resp.data.items
     })
   ).catch(err => {
     dispatch(returnErrors(err.response.data,err.response.status));
@@ -37,13 +37,13 @@ export const deleteItem = id => (dispatch, getState) => {
 
 export const addItem = item => (dispatch, getState) => {
     axios
-    .post('/api/cars', item, tokenConfig(getState))
+    .post('/api/items', item, tokenConfig(getState))
     .then( resp => {
       alert('successful')
       console.log(resp);
       dispatch({
         type:ADD_ITEM,
-        payload: resp.data.car  
+        payload: resp.data.item  
     })
     }).catch(err => {
       alert('failed to upload')

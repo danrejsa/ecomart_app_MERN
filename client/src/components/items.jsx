@@ -5,9 +5,10 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Report from "./reportAd";
 import Pagination from "./pagination";
-import BuyCar from "./buyCar";
-import BuyCarModal from "./buyCarModal";
+import BuyItem from "./buyItem";
+import BuyItemModal from "./buyItemModal";
 import ViewDetails from "./viewDetails";
+import Footer from "./footer";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
   Container,
@@ -24,13 +25,13 @@ import {
   Alert
 } from "reactstrap";
 
-class Cars extends Component {
+class Items extends Component {
   componentWillMount() {
     this.props.getItems();
   }
   state = {
     currentPage: 1,
-    carsPerPage: 9,
+    itemsPerPage: 9,
     setCurrentPage: null
   };
 
@@ -41,11 +42,11 @@ class Cars extends Component {
   };
 
   render() {
-    const { cars } = this.props.car;
+    const { items } = this.props.item;
     const { isAuthenticated, user } = this.props.auth;
-    const indexOfLastPost = this.state.currentPage * this.state.carsPerPage;
-    const indexOfFirstPost = indexOfLastPost - this.state.carsPerPage;
-    const currentCars = cars.slice(indexOfFirstPost, indexOfLastPost);
+    const indexOfLastPost = this.state.currentPage * this.state.itemsPerPage;
+    const indexOfFirstPost = indexOfLastPost - this.state.itemsPerPage;
+    const currentItems = items.slice(indexOfFirstPost, indexOfLastPost);
 
     return (
       <Router>
@@ -64,16 +65,16 @@ class Cars extends Component {
           </form>
 
           <div className="containers">
-            {currentCars.map(car => (
-              <div className="car-container" style={{ height: "300px" }}>
+            {currentItems.map(item => (
+              <div className="item-container" style={{ height: "300px" }}>
                 <div
-                  className="car-img-container"
+                  className="item-img-container"
                   style={{ width: "90%", height: "170px" }}
                 >
                   <img
-                    className="car-image"
+                    className="item-image"
                     style={{ width: "100%", height: "170px" }}
-                    src={car.image_url}
+                    src={item.image_url}
                     alt="missing image"
                   />
                 </div>
@@ -84,55 +85,56 @@ class Cars extends Component {
                     marginTop: "0.5rem"
                   }}
                 >
-                  <strong>Model</strong>: {car.manufacturer}
+                  <strong>Product</strong>: {item.manufacturer}
                 </li>
                 <li style={{ listStyleType: "none", marginLeft: "20px" }}>
-                  <strong>Price</strong>: {car.price}
+                  <strong>Price</strong>:N {item.price}
                 </li>
                 <div className="actions">
                   <ViewDetails
-                    carId={car._id}
-                    carManu={car.manufacturer}
-                    carPrice={car.price}
-                    carState={car.state}
-                    carTransmission={car.transmission}
-                    carLicense={car.license}
-                    carYear={car.year}
-                    carDescription={car.description}
-                    carImage={car.image_url}
-                    carDate={car.created_on}
+                    itemId={item._id}
+                    itemManu={item.manufacturer}
+                    itemPrice={item.price}
+                    itemState={item.state}
+                    itemTransmission={item.transmission}
+                    itemLicense={item.license}
+                    itemYear={item.year}
+                    itemDescription={item.description}
+                    itemImage={item.image_url}
+                    itemDate={item.created_on}
                   />
 
-                  <Report carId={car._id} carManu={car.manufacturer} />
+                  <Report itemId={item._id} itemManu={item.manufacturer} />
 
-                  <BuyCarModal
-                    ownerName={car.name}
-                    ownerEmail={car.email}
-                    carManu={car.manufacturer}
-                    carAdd={car.address}
-                    carPhone={car.phone}
-                    carPrice={car.price}
+                  <BuyItemModal
+                    ownerName={item.name}
+                    ownerEmail={item.email}
+                    itemManu={item.manufacturer}
+                    itemAdd={item.address}
+                    ownerPhone={item.phone}
+                    itemPrice={item.price}
                   />
                 </div>
               </div>
             ))}
           </div>
           <Pagination
-            carsPerPage={this.state.carsPerPage}
-            totalCars={cars.length}
+            itemsPerPage={this.state.itemsPerPage}
+            totalItems={items.length}
             paginate={this.paginate}
           />
         </Container>
-        <Route path="/buyCar/" component={BuyCar} />
+        <Footer/>  
+        <Route path="/buyItem/" component={BuyItem} />
       </Router>
     );
   }
 }
 const mapStateToProps = state => ({
-  car: state.car,
+  item: state.item,
   auth: state.auth
 });
 export default connect(
   mapStateToProps,
   { getItems, deleteItem }
-)(Cars);
+)(Items);

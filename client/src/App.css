@@ -12,9 +12,7 @@
   height: 40vmin; 
   pointer-events: none;
 }
-h2{
-  text-align:center
-}
+
 .body_type{
   
   margin:10px;
@@ -26,20 +24,40 @@ h2{
 @keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
 
 
-.post-button{
+.post-btn{
   box-shadow: 0 0 0 0 rgb(182, 214, 240);
+  margin: 5px; 
+  padding: 1px;
+  width: 100px;
+  height: 40px;
+  display:flex;
+  justify-content:space-between;
 cursor:pointer;
 -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
 -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
 -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1); animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
 }
 
-.post-button:hover{
+.post-btn:hover{
   -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+  text-decoration: none;
 }
 /*box-shadow: 0 5px 45px 0 rgba(89, 109, 121, 0.2);*/
 
-.car-container{
+.post-btn-link:hover{
+  text-decoration: none;
+}
+.post-title{
+  margin-bottom:2rem;
+  color:gray;
+  text-align:center
+}
+
+h2{
+  text-align:center
+}
+
+.item-container{
   margin-top:3rem;
   width:30%;
   height:300px;
@@ -59,19 +77,19 @@ cursor:pointer;
   flex-wrap: wrap;
 list-style-type: none
 }
-.car-img-container{
+.item-img-container{
   margin-top:10px;
   width:90%;
   margin-left:auto;
   margin-right:auto; 
 }
-.car-img{
+.item-img{
   margin-left:auto;
   margin-right:auto;  
   width:100%;
   height:150px;
 }
-.car-container{
+.item-container{
   margin:18px;
   width:30%;
   height:250px;
@@ -143,6 +161,9 @@ margin-right:auto;
   margin-left:auto;
   margin-right:auto;
 }
+.post-btn-text:hover{
+text-decoration: none;
+}
 
 footer{
   width:100%;
@@ -152,6 +173,7 @@ footer{
   height:350px;
   color:#442563;
   font-size:14px;
+ 
   margin-top:10rem;
   background-repeat:no-repeat;
 }
@@ -160,6 +182,21 @@ footer{
   width:30px;
   height:25px;
    padding:3px;
+}
+
+
+
+#hello:hover{
+  text-decoration: none;
+}
+
+.dashboard-btn{
+
+    margin: 5px;
+    padding: 1px;
+    width: 100px;
+    height: 40px;
+  
 }
 
 .footer-business{

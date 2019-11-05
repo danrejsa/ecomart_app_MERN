@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-import  Paypal  from './payments/paypal'
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class BuyCar extends Component {

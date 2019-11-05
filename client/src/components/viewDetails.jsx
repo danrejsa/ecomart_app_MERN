@@ -49,58 +49,58 @@ class ViewDetails extends Component {
           toggle={this.toggle}
           className={this.props.className}
         >
-          <ModalHeader toggle={this.toggle}>Car Details</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Item Details</ModalHeader>
           <ModalBody>
             <img
               style={{ width: "200px", height: "150px" }}
-              src={this.props.carImage}
-              alt={this.props.carManu}
+              src={this.props.itemImage}
+              alt={this.props.itemManu}
             />
             <br />
             <Label>
-              <strong>Car ID:</strong>
+              <strong>Item ID:</strong>
             </Label>{" "}
-            {this.props.carId}
+            {this.props.itemId}
             <br />
             <Label>
               <strong>Model:</strong>
             </Label>{" "}
-            {this.props.carManu}
+            {this.props.itemManu}
             <br />
             <Label>
               <strong>Price:</strong>
             </Label>{" "}
-            {this.props.carPrice}
+            {this.props.itemPrice}
             <br />
             <Label>
               <strong>Year:</strong>
             </Label>{" "}
-            {this.props.carYear}
+            {this.props.itemYear}
             <br />
             <Label>
               <strong>State:</strong>
             </Label>{" "}
-            {this.props.carState}
+            {this.props.itemState}
             <br />
             <Label>
               <strong>Transmission:</strong>
             </Label>{" "}
-            {this.props.carTransmission}
+            {this.props.itemTransmission}
             <br />
             <Label>
               <strong>License:</strong>
             </Label>{" "}
-            {this.props.carLicense}
+            {this.props.itemLicense}
             <br />
             <Label>
               <strong>Posted On:</strong>
             </Label>{" "}
-            {this.props.carDate}
+            {this.props.itemDate}
             <br />
             <Label>
               <strong>Description:</strong>
             </Label>{" "}
-            {this.props.carDescription}
+            {this.props.itemDescription}
             <br />
           </ModalBody>
           <ModalFooter />

@@ -1,13 +1,6 @@
-import React, {Fragment, Component } from "react";
+import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
 import { addItem } from "../actions/postAction";
-import { AUTH_ERROR } from "../actions/types";
-import PropTypes from "prop-types";
-import Home from "./home";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
 import {
   Button,
   Form,
@@ -19,109 +12,104 @@ import {
   Progress
 } from "reactstrap";
 
-class PostAds extends Component {
-  static propTypes = {
-    isAuthenticated: PropTypes.bool
-  };
-
-  state = {
+class Others extends Component {
+    state = { 
     customerId:"",
     name: "",
     email: "",
-    car_location: "",
+    item_location: "",
     address: "",
     phone: "",
-    manufacturer: "",
-    body_type: "",
+    manufacturer: "",   
     year: "",
-    price: "",
-    transmission: "",
+    price: "",    
     license: "",
     state: "",
     status: "",
     description: "",
     file: null,
-    imagePreviewUrl: ""
-  };
+    imagePreviewUrl: "" }
 
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  _handleImageChange = e => {
-    e.preventDefault();
-    let reader = new FileReader();
-    let file = e.target.files[0];
-    reader.onloadend = () => {
-      this.setState({
-        file: file,
-        imagePreviewUrl: reader.result
-      });
+    onChange = e => {
+      this.setState({ [e.target.name]: e.target.value });
     };
 
-    reader.readAsDataURL(file);
-  };
 
-  onSubmit = e => {
-    e.preventDefault();
-    const data = new FormData();
-    data.append("customerId", this.state.customerId);
-    data.append("name", this.state.name);
-    data.append("email", this.state.email);
-    data.append("car_location", this.state.car_location);
-    data.append("address", this.state.address);
-    data.append("phone", this.state.phone);
-    data.append("manufacturer", this.state.manufacturer);
-    data.append("body_type", this.state.body_type);
-    data.append("year", this.state.year);
-    data.append("price", this.state.price);
-    data.append("transmission", this.state.transmission);
-    data.append("license", this.state.license);
-    data.append("state", this.state.state);
-    data.append("status", this.state.status);
-    data.append("description", this.state.description);
-    data.append("file", this.state.file);
-    this.props.addItem(data);
-  };
 
-  render() {
-    let { imagePreviewUrl } = this.state;
-    let $imagePreview = null;
-    if (imagePreviewUrl) {
-      $imagePreview = (
-        <img
-          style={{ width: "150px", height: "130px" }}
-          src={imagePreviewUrl}
-        />
-      );
-    }
+    _handleImageChange = e => {
+      e.preventDefault();
+      let reader = new FileReader();
+      let file = e.target.files[0];
+      reader.onloadend = () => {
+        this.setState({
+          file: file,
+          imagePreviewUrl: reader.result
+        });
+      };
+  
+      reader.readAsDataURL(file);
+    };
 
-    const {
-      customerId,
-      name,
-      email,
-      car_location,
-      address,
-      phone,
-      manufacturer,
-      body_type,
-      year,
-      price,
-      transmission,
-      license,
-      state,
-      status,
-      description,
-      image_url
-    } = this.state;
-    const { isAuthenticated, user } = this.props.auth;
-    return (
-      
-      <Container style={{ marginTop: "3rem" }}>
+
+    onSubmit = e => {
+      e.preventDefault();
+      const data = new FormData();
+      data.append("customerId", this.state.customerId);
+      data.append("name", this.state.name);
+      data.append("email", this.state.email);
+      data.append("item_location", this.state.item_location);
+      data.append("address", this.state.address);
+      data.append("phone", this.state.phone);
+      data.append("manufacturer", this.state.manufacturer);  
+      data.append("state", this.state.state);
+      data.append("year", this.state.year);
+      data.append("price", this.state.price);   
+      data.append("license", this.state.license);  
+      data.append("status", this.state.status);
+      data.append("description", this.state.description);
+      data.append("file", this.state.file);
+      this.props.addItem(data);
+    };
+
+
+
+
+
+
+    
+    render() { 
+      let { imagePreviewUrl } = this.state;
+      let $imagePreview = null;
+      if (imagePreviewUrl) {
+        $imagePreview = (
+          <img
+            style={{ width: "150px", height: "130px" }}
+            src={imagePreviewUrl}
+          />
+        );
+      }
+  
+      const { isAuthenticated, user } = this.props.auth;
+      const {
+        customerId,
+        name,
+        email,
+        item_location,
+        address,
+        phone,
+        manufacturer,       
+        year,
+        price,        
+        license,
+        state,
+        status,
+        description       
+      } = this.state;
+        return (  <Container style={{ marginTop: "3rem" }}>
         
         {isAuthenticated? 
         <Fragment>       
-        <h2>Post Ad</h2>
+        <h3 className='post-title'>Post Other Ads</h3>
         <Form
           onSubmit={this.onSubmit}
           ref="myForm"
@@ -178,50 +166,32 @@ class PostAds extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="car_location">Current Car Location</Label>
+            <Label for="item_location">Product Location</Label>
             <Input
               onChange={this.onChange}
               type="text"
-              name="car_location"
-              id="car_location"
-              value={car_location}
+              name="item_location"
+              id="item_location"
+              value={item_location}
             />
+
           </FormGroup>
 
           <FormGroup>
-            <Label for="manufacture">Manufacturer</Label>
+            <Label for="manufacture">Product Name </Label>
             <Input
               onChange={this.onChange}
-              type="select"
+              type="text"
               name="manufacturer"
               id="manufacturer"
+              placeholder='(e.g BMX 555 bicycle, Italian hand bag,German leather Shoe, Yamaha keyboard,
+                Sean Wallet)'
               value={manufacturer}
             >
-              <option selected> --select-- </option>
-              <option>Honda</option>
-              <option>Toyota</option>
-              <option>Peugeot</option>
-              <option>Mercedes</option>
-              <option>Nissan</option>
-              <option>Lexus</option>
+             
             </Input>
           </FormGroup>
-          <FormGroup>
-            <Label for="body_type">Body Type</Label>
-            <Input
-              onChange={this.onChange}
-              type="select"
-              name="body_type"
-              id="body_type"
-              value={body_type}
-            >
-              <option selected>--select--</option>
-              <option>SUV</option>
-              <option>Saloon</option>
-              <option>Car</option>
-              <option>Truck</option>
-            </Input>
-          </FormGroup>
+        
           <FormGroup>
             <Label for="year">Year</Label>
             <Input
@@ -239,27 +209,14 @@ class PostAds extends Component {
               type="text"
               name="price"
               id="price"
-              placeholder="$ 10,000"
+              placeholder=" 10,000"
               value={price}
             />
           </FormGroup>
 
+         
           <FormGroup>
-            <Label for="transmission">Transmission</Label>
-            <Input
-              onChange={this.onChange}
-              type="select"
-              name="transmission"
-              id="transmission"
-              value={transmission}
-            >
-              <option selected>--select--</option>
-              <option>Automatic</option>
-              <option>Manual</option>
-            </Input>
-          </FormGroup>
-          <FormGroup>
-            <Label for="license">License</Label>
+            <Label for="license">License (If applicable)</Label>
             <Input
               onChange={this.onChange}
               type="text"
@@ -279,7 +236,7 @@ class PostAds extends Component {
             >
               <option selected>--select--</option>
               <option>New</option>
-              <option>Used</option>
+              <option>Fairly Used</option>
               <option>Old</option>
             </Input>
           </FormGroup>
@@ -304,7 +261,7 @@ class PostAds extends Component {
               type="textarea"
               name="description"
               id="description"
-              placeholder="Please provide a detailed description. You can mention as many details as possible. It will make your ads more attractive"
+              placeholder="Please provide a detailed description. You can mention as many details as possible. It will make your Carore attractive"
               value={description}
             />
           </FormGroup>
@@ -326,11 +283,10 @@ class PostAds extends Component {
         :<Alert style={{width:'100%'}} color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
         Please, you need to login to post an Ads!
       </Alert>}
-      </Container>
-    );
-  }
+      </Container>);
+    }
 }
-
+ 
 const mapStateToProps = state => ({
   car: state.car,
   auth: state.auth
@@ -339,4 +295,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { addItem }
-)(PostAds);
+)( Others); 

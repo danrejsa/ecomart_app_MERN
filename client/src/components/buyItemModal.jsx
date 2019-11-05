@@ -17,7 +17,7 @@ import {
   Alert
 } from "reactstrap";
 
-class BuyCarModal extends Component {
+class BuyItemModal extends Component {
   static propTypes = {
     isAuthenticated: PropTypes.bool
     // error: PropTypes.object.isRequired
@@ -51,25 +51,25 @@ class BuyCarModal extends Component {
               <Form onSubmit={this.onSubmit}>
                 <FormGroup>
                   <Label for="name">
-                    <strong>Car Details:</strong>
+                    <strong>Item Details:</strong>
                   </Label>
                   <br />
                   <p>
-                    Manufacturer:&nbsp;
-                    <span style={{ color: "red" }}>{this.props.carManu}</span>
+                    Product:&nbsp;
+                    <span style={{ color: "red" }}>{this.props.itemManu}</span>
                   </p>
                   <p>
                     Price:&nbsp;
-                    <span style={{ color: "red" }}>{this.props.carPrice}</span>
+                    <span style={{ color: "red" }}>{this.props.itemPrice}</span>
                   </p>
                   <p>
-                    Current Car Location:&nbsp;
-                    <span style={{ color: "red" }}>{this.props.carAdd}</span>
+                    Current item Location:&nbsp;
+                    <span style={{ color: "red" }}>{this.props.itemAdd}</span>
                   </p>
                 </FormGroup>
                 <FormGroup>
                   <Label for="name">
-                    <strong>Owner Details:</strong>
+                    <strong>Posted By:</strong>
                   </Label>
                   <br />
                   <p>
@@ -84,12 +84,9 @@ class BuyCarModal extends Component {
                   </p>
                   <p>
                     Phone:&nbsp;
-                    <span style={{ color: "red" }}>{this.props.carPhone}</span>
+                    <span style={{ color: "red" }}>{this.props.ownerPhone}</span>
                   </p>
-                  <p>
-                    Address:&nbsp;
-                    <span style={{ color: "red" }}>{this.props.carAdd}</span>
-                  </p>
+                 
 
                   <hr />
                   <h6>Important Information!</h6>
@@ -107,7 +104,7 @@ class BuyCarModal extends Component {
                   </p>
                   <p>
                     iii.{" "}
-                    <span> &nbsp; Check car very well BEFORE you buy it</span>
+                    <span> &nbsp; Check item very well BEFORE you buy it</span>
                   </p>
                   <p>
                     iv. <span> &nbsp; Pay ONLY after collecting the item</span>
@@ -125,7 +122,7 @@ class BuyCarModal extends Component {
             className={this.props.className}
           >
             <ModalHeader togglePost={this.togglePost}>
-              DANREJ AUTOMART
+              DLinks
             </ModalHeader>
             <ModalBody>Please login to perform this transaction</ModalBody>
             <ModalFooter>
@@ -150,4 +147,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   null
-)(BuyCarModal);
+)(BuyItemModal);
